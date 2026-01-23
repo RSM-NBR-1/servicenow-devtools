@@ -13,33 +13,6 @@
 {
 	var linkdirectory =
 		{
-			'IDEs':
-			[
-				{
-					title: 'ServiceNow Studio',
-					url: '/now/servicenow-studio/'
-				},
-				{
-					title: 'Classic Studio',
-					url: '$studio.do'
-				},
-				{
-					title: 'Workflow Studio',
-					url: '/now/workflow-studio/'
-				},
-				{
-					title: 'UI Builder',
-					url: '/now/builder/ui/'
-				},
-				{
-					title: 'Service Portal Config',
-					url: '/sp_config'
-				},			
-				{
-					title: 'ATF Test Suites',
-					table: 'sys_atf_test_suite'
-				}	
-			],
 			'Organization':
 			[
 				{
@@ -47,9 +20,6 @@
 				},
 				{
 					table: 'sys_user_group'
-				},
-				{
-					table: 'sys_user_group_type'
 				},
 				{
 					table: 'core_company'
@@ -98,9 +68,6 @@
 				},					
 				{
 					table: 'sys_metadata'
-				},
-				{
-					table: 'sys_metadata_customization'
 				},
 				{
 					table: 'sys_repo_config'
@@ -342,12 +309,6 @@
 				},
 				{
 					table: 'sys_atf_test_result'
-				},
-				{
-					table: 'sys_atf_step_config'
-				},
-				{
-					table: 'sys_atf_test_callable'
 				}
 			],
 			'Instance Scan':
@@ -373,9 +334,6 @@
 			],			
 			'Generative AI Controller':
 			[
-				{
-					table: 'sys_generative_ai_config'
-				},
 				{
 					table: 'sys_one_extend_capability'
 				},
@@ -429,12 +387,6 @@
 				},
 				{
 					table: 'sys_ui_element' 
-				},
-				{
-					table: 'sys_ui_related_list' 
-				},
-				{
-					table: 'sys_ui_related_list_entry' 
 				},
 				{
 					table: 'sysrule_view' 
@@ -1085,7 +1037,7 @@
 	for (var nEP = 0; nEP < eps.length; nEP++)
 	{
 		var ep = eps[nEP];
-		if (IsFunction(ep.GetLinkDirectory))
+		if (IsValidFunction(ep.GetLinkDirectory))
 		{
 			var linkdirectory_new = ep.GetLinkDirectory(linkdirectory);
 			if (GetType(linkdirectory_new) == 'Object')
@@ -1102,15 +1054,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-10-19 17:03:37</sys_created_on>
         <sys_id>a8582ae11b5774d0edf3642aab4bcb86</sys_id>
-        <sys_mod_count>153</sys_mod_count>
+        <sys_mod_count>139</sys_mod_count>
         <sys_name>GetLinkDirectory</sys_name>
         <sys_package display_value="DevTools" source="x_snc_devtools">d689f6901bd38450a89720a8ec4bcbfd</sys_package>
         <sys_policy/>
         <sys_scope display_value="DevTools">d689f6901bd38450a89720a8ec4bcbfd</sys_scope>
         <sys_update_name>sys_script_include_a8582ae11b5774d0edf3642aab4bcb86</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-11-26 09:18:42</sys_updated_on>
-        <x_snc_devtools_sys_ui_script/>
+        <sys_updated_on>2025-04-07 11:02:55</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>a8582ae11b5774d0edf3642aab4bcb86</id>
