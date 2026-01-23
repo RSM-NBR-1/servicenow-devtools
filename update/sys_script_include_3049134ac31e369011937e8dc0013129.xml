@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
+    <sys_script_include action="INSERT_OR_UPDATE">
+        <access>public</access>
+        <active>true</active>
+        <api_name>x_snc_devtools.RecordTransporterPackageCatalogTopics</api_name>
+        <caller_access/>
+        <client_callable>false</client_callable>
+        <description/>
+        <mobile_callable>false</mobile_callable>
+        <name>RecordTransporterPackageCatalogTopics</name>
+        <sandbox_callable>false</sandbox_callable>
+        <script><![CDATA[function RecordTransporterPackageCatalogTopics(vPackage, query) {
+
+    var grPackage = RecordTransporterGetPackageRecord(vPackage);
+    if (IsValidRecord(grPackage) == false) {
+        return false;
+    }
+
+    var strPackageScope = GetStringValue(grPackage.sys_scope);
+
+    var topicsSysIds = {};
+
+    var grCatItem = new GlideRecord('sc_cat_item');
+    grCatItem.addQuery('sys_scope', strPackageScope);
+    GlideRecordAddQuery(grCatItem, query);
+    grCatItem.query();
+
+    while (grCatItem.next()) {
+        var strCatItemSysId = GetStringValue(grCatItem.sys_id);
+
+        var grM2M = new GlideRecord('m2m_connected_content');
+        grM2M.addQuery('catalog_item', strCatItemSysId);
+        grM2M.query();
+
+        while (grM2M.next()) {
+            RecordTransporterRecordPack(grPackage, grM2M);
+
+            var strTopicSysId = GetStringValue(grM2M.topic);
+            if (strTopicSysId) {
+                topicsSysIds[strTopicSysId] = true;
+            }
+        }
+    }
+
+    for (var topicSysId in topicsSysIds) {
+        var grTopic = GetRecord('topic', topicSysId);
+        if (IsValidRecord(grTopic) == true) {
+            if (GetStringValue(grTopic.sys_scope) == strPackageScope) {
+                RecordTransporterRecordPack(grPackage, grTopic);
+            }
+        }
+    }
+
+    return true;
+}
+]]></script>
+        <sys_class_name>sys_script_include</sys_class_name>
+        <sys_created_by>Admin.Borislav.Filipov</sys_created_by>
+        <sys_created_on>2026-01-09 10:24:10</sys_created_on>
+        <sys_id>3049134ac31e369011937e8dc0013129</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>RecordTransporterPackageCatalogTopics</sys_name>
+        <sys_package display_value="DevTools" source="x_snc_devtools">d689f6901bd38450a89720a8ec4bcbfd</sys_package>
+        <sys_policy>read</sys_policy>
+        <sys_scope display_value="DevTools">d689f6901bd38450a89720a8ec4bcbfd</sys_scope>
+        <sys_update_name>sys_script_include_3049134ac31e369011937e8dc0013129</sys_update_name>
+        <sys_updated_by>Admin.Borislav.Filipov</sys_updated_by>
+        <sys_updated_on>2026-01-09 10:24:10</sys_updated_on>
+        <x_snc_devtools_sys_ui_script/>
+    </sys_script_include>
+    <sys_es_latest_script action="INSERT_OR_UPDATE">
+        <id>3049134ac31e369011937e8dc0013129</id>
+        <sys_created_by>Admin.Borislav.Filipov</sys_created_by>
+        <sys_created_on>2026-01-09 10:24:09</sys_created_on>
+        <sys_id>055ad30ec31e369011937e8dc0013139</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>Admin.Borislav.Filipov</sys_updated_by>
+        <sys_updated_on>2026-01-09 10:24:09</sys_updated_on>
+        <table>sys_script_include</table>
+        <use_es_latest>true</use_es_latest>
+    </sys_es_latest_script>
+</record_update>

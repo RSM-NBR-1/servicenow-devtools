@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_restricted_caller_access">
+    <sys_restricted_caller_access action="INSERT_OR_UPDATE">
+        <description/>
+        <operation>execute</operation>
+        <rca_type>real_rca</rca_type>
+        <source>148482fcc324a2d011937e8dc00131ed</source>
+        <source_scope display_value="DR CMDB WORK IN PROGRESS">4cc6227a3b102a104d73604a85e45a5c</source_scope>
+        <source_table>sys_script_include</source_table>
+        <source_type>2</source_type>
+        <status>2</status>
+        <sys_class_name>sys_restricted_caller_access</sys_class_name>
+        <sys_created_by>piotr.wychota</sys_created_by>
+        <sys_created_on>2026-01-02 14:12:35</sys_created_on>
+        <sys_id>c37b48c0c39af25411937e8dc0013167</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>4cc6227a3b102a104d73604a85e45a5c</sys_name>
+        <sys_package display_value="DevTools" source="x_snc_devtools">d689f6901bd38450a89720a8ec4bcbfd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DevTools">d689f6901bd38450a89720a8ec4bcbfd</sys_scope>
+        <sys_update_name>sys_restricted_caller_access_c37b48c0c39af25411937e8dc0013167</sys_update_name>
+        <sys_updated_by>piotr.wychota</sys_updated_by>
+        <sys_updated_on>2026-01-02 14:12:35</sys_updated_on>
+        <target>704694a81b1a74505331b8449b4bcb69</target>
+        <target_scope display_value="DevTools">d689f6901bd38450a89720a8ec4bcbfd</target_scope>
+        <target_table>sys_script_include</target_table>
+        <target_type>2</target_type>
+    </sys_restricted_caller_access>
+</record_update>
