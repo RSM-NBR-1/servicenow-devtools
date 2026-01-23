@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_restricted_caller_access">
+    <sys_restricted_caller_access action="INSERT_OR_UPDATE">
+        <description/>
+        <operation>execute</operation>
+        <rca_type>real_rca</rca_type>
+        <source>c6cc091dc390e25011937e8dc0013199</source>
+        <source_scope display_value="DR HR Core">66fad92d3b1f1e104d73604a85e45a0a</source_scope>
+        <source_table>sys_script_include</source_table>
+        <source_type>2</source_type>
+        <status>2</status>
+        <sys_class_name>sys_restricted_caller_access</sys_class_name>
+        <sys_created_by>robert.haenel</sys_created_by>
+        <sys_created_on>2026-01-05 12:21:01</sys_created_on>
+        <sys_id>bdbe0b34c356f6108087087dc001313b</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>66fad92d3b1f1e104d73604a85e45a0a</sys_name>
+        <sys_package display_value="DevTools" source="x_snc_devtools">d689f6901bd38450a89720a8ec4bcbfd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DevTools">d689f6901bd38450a89720a8ec4bcbfd</sys_scope>
+        <sys_update_name>sys_restricted_caller_access_bdbe0b34c356f6108087087dc001313b</sys_update_name>
+        <sys_updated_by>robert.haenel</sys_updated_by>
+        <sys_updated_on>2026-01-05 12:21:01</sys_updated_on>
+        <target>704694a81b1a74505331b8449b4bcb69</target>
+        <target_scope display_value="DevTools">d689f6901bd38450a89720a8ec4bcbfd</target_scope>
+        <target_table>sys_script_include</target_table>
+        <target_type>2</target_type>
+    </sys_restricted_caller_access>
+</record_update>
