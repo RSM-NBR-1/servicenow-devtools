@@ -34,20 +34,6 @@ With a failure timeout of 5 Seconds</description>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_atf_step</document>
         <document_key>70f2501d1bbaf410edf3642aab4bcb63</document_key>
-        <order>300</order>
-        <sys_class_name>sys_variable_value</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2021-09-23 15:01:20</sys_created_on>
-        <sys_id>2f43541d1bbaf410edf3642aab4bcbea</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2021-09-23 15:01:20</sys_updated_on>
-        <value>sys_dictionary</value>
-        <variable display_value="Table">78b8d86b531000109e02ddeeff7b12f3</variable>
-    </sys_variable_value>
-    <sys_variable_value action="INSERT_OR_UPDATE">
-        <document>sys_atf_step</document>
-        <document_key>70f2501d1bbaf410edf3642aab4bcb63</document_key>
         <order>200</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -86,6 +72,20 @@ With a failure timeout of 5 Seconds</description>
         <sys_updated_on>2021-09-23 15:03:12</sys_updated_on>
         <value>name=sysauto_script^attributesLIKEupdate_synch=true^EQ</value>
         <variable display_value="Conditions">915990ab531000109e02ddeeff7b12f8</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>70f2501d1bbaf410edf3642aab4bcb63</document_key>
+        <order>300</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2021-09-23 15:01:20</sys_created_on>
+        <sys_id>2f43541d1bbaf410edf3642aab4bcbea</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2021-09-23 15:01:20</sys_updated_on>
+        <value>sys_dictionary</value>
+        <variable display_value="Table">78b8d86b531000109e02ddeeff7b12f3</variable>
     </sys_variable_value>
     <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_2d82e3c7531400109e02ddeeff7b12a7^id=70f2501d1bbaf410edf3642aab4bcb63"/>
 </record_update>

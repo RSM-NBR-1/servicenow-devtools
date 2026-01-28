@@ -34,6 +34,20 @@ With a failure timeout of 5 Seconds</description>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_atf_step</document>
         <document_key>b35afdbb1bd13150cd6153d16b4bcb03</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2023-09-22 12:07:25</sys_created_on>
+        <sys_id>f77a71fb1bd13150cd6153d16b4bcbea</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2023-09-22 12:07:25</sys_updated_on>
+        <value>0</value>
+        <variable display_value="Enforce security">02fb0027531000109e02ddeeff7b120b</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>b35afdbb1bd13150cd6153d16b4bcb03</document_key>
         <order>200</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -44,20 +58,6 @@ With a failure timeout of 5 Seconds</description>
         <sys_updated_on>2023-09-22 12:07:25</sys_updated_on>
         <value>records_match_query</value>
         <variable display_value="Assert type">b86c0427531000109e02ddeeff7b1227</variable>
-    </sys_variable_value>
-    <sys_variable_value action="INSERT_OR_UPDATE">
-        <document>sys_atf_step</document>
-        <document_key>b35afdbb1bd13150cd6153d16b4bcb03</document_key>
-        <order>400</order>
-        <sys_class_name>sys_variable_value</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2023-09-22 12:07:25</sys_created_on>
-        <sys_id>7f7a71fb1bd13150cd6153d16b4bcbea</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2023-09-22 12:07:25</sys_updated_on>
-        <value>name=glide.record.legacy_cross_scope_access_policy_in_script^value=true^EQ</value>
-        <variable display_value="Conditions">915990ab531000109e02ddeeff7b12f8</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_atf_step</document>
@@ -76,16 +76,16 @@ With a failure timeout of 5 Seconds</description>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_atf_step</document>
         <document_key>b35afdbb1bd13150cd6153d16b4bcb03</document_key>
-        <order>100</order>
+        <order>400</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-09-22 12:07:25</sys_created_on>
-        <sys_id>f77a71fb1bd13150cd6153d16b4bcbea</sys_id>
+        <sys_id>7f7a71fb1bd13150cd6153d16b4bcbea</sys_id>
         <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
         <sys_updated_on>2023-09-22 12:07:25</sys_updated_on>
-        <value>0</value>
-        <variable display_value="Enforce security">02fb0027531000109e02ddeeff7b120b</variable>
+        <value>name=glide.record.legacy_cross_scope_access_policy_in_script^value=true^EQ</value>
+        <variable display_value="Conditions">915990ab531000109e02ddeeff7b12f8</variable>
     </sys_variable_value>
     <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_2d82e3c7531400109e02ddeeff7b12a7^id=b35afdbb1bd13150cd6153d16b4bcb03"/>
 </record_update>

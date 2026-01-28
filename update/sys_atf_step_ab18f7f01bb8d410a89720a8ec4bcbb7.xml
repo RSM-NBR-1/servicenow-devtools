@@ -37,16 +37,16 @@ With a failure timeout of 5 Seconds</description>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_atf_step</document>
         <document_key>ab18f7f01bb8d410a89720a8ec4bcbb7</document_key>
-        <order>400</order>
+        <order>100</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-05-13 15:57:16</sys_created_on>
-        <sys_id>5b58fbf01bb8d410a89720a8ec4bcb98</sys_id>
-        <sys_mod_count>3</sys_mod_count>
+        <sys_id>d358fbf01bb8d410a89720a8ec4bcb98</sys_id>
+        <sys_mod_count>0</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-07-04 10:40:09</sys_updated_on>
-        <value>short_description=_ATF_DEVTOOLS_INCIDENT_1^caller_id={{step['1f422ea51b3d9050a89720a8ec4bcb7d'].first_record}}^assignment_group={{step['d173bbbc1b78d410a89720a8ec4bcb0e'].first_record}}^opened_by={{step['ff71fb3c1b78d410a89720a8ec4bcbf7'].first_record}}^EQ</value>
-        <variable display_value="Conditions">cf167c405f30220012b44adb7f46660d</variable>
+        <sys_updated_on>2020-05-13 15:57:16</sys_updated_on>
+        <value>1</value>
+        <variable display_value="Enforce security">9459c28673103300f660eeadfff6a7dd</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_atf_step</document>
@@ -65,16 +65,16 @@ With a failure timeout of 5 Seconds</description>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_atf_step</document>
         <document_key>ab18f7f01bb8d410a89720a8ec4bcbb7</document_key>
-        <order>100</order>
+        <order>400</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-05-13 15:57:16</sys_created_on>
-        <sys_id>d358fbf01bb8d410a89720a8ec4bcb98</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_id>5b58fbf01bb8d410a89720a8ec4bcb98</sys_id>
+        <sys_mod_count>3</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-05-13 15:57:16</sys_updated_on>
-        <value>1</value>
-        <variable display_value="Enforce security">9459c28673103300f660eeadfff6a7dd</variable>
+        <sys_updated_on>2020-07-04 10:40:09</sys_updated_on>
+        <value>short_description=_ATF_DEVTOOLS_INCIDENT_1^caller_id={{step['1f422ea51b3d9050a89720a8ec4bcb7d'].first_record}}^assignment_group={{step['d173bbbc1b78d410a89720a8ec4bcb0e'].first_record}}^opened_by={{step['ff71fb3c1b78d410a89720a8ec4bcbf7'].first_record}}^EQ</value>
+        <variable display_value="Conditions">cf167c405f30220012b44adb7f46660d</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_atf_step</document>

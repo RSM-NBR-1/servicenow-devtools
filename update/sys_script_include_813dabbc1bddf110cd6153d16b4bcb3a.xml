@@ -12,15 +12,11 @@
         <script><![CDATA[function GetEvaluatorErrorExceptionPatterns()
 {
 	var aPatterns = [
-		// this is to avoid the warning during DevTools installation ;)
-		'ShowRecentEvaluatorErrors',
-
-		// Pre-Yokohama
+		'ShowRecentEvaluatorErrors', // this is to avoid the warning during DevTools installation ;)
 		'"referrerpolicy" is not defined',
 		'browser.isMSIE11',
 		'devstudio_config.xml',
 		'"RP" is not defined',
-		'"SPEntryPage" is not defined',
 		'"xml_baseline_string" is not defined.',
 		'"ChangeRequestDiscovery" is not defined.',
 		'GlideRecord.query() - invalid table name: itom_lu_discovery_sources',
@@ -46,11 +42,7 @@
 		'Cannot read property "device_type" from null',
 		'"sn_atf_tg" is not defined.',
 		'sys_security_acl.local_or_existing = sys_security_acl.security_attribute.is_localized ?',
-		'"report_notification_url" is not defined.',
-		'"sn_devops" is not defined.',
-		'"sn_pace" is not defined.',
-		'new sn_mfg_common.OTRMUtilsAjax().getOTCatalogItems();',
-				
+		
 		'60b1d53fef12110', // 60b1d53fef1211002841f7f775c0fb54
 		'293eb723d723210', // 293eb723d7232100b6bddb0c82520320
 		'708da435db83170', // 708da435db831700dd14596e5e96194e
@@ -100,14 +92,7 @@
 		'8d27c0fa53b5011', // 8d27c0fa53b50110f263ddeeff7b1287 
 		'94f48f061502011', // 94f48f0615020110fa9b58a2aaf5c033      
 		'26a0441f73e0021', // 26a0441f73e00210210ea11cff148b2c     
-		'2cfea7227725111', // 2cfea72277251110b1fd4a783c5a9974    
-		'63c1671c7f09121', // 63c1671c7f091210226793db5d8665a9    
-		'fc03287b7742411', // fc03287b774241105c974a783c5a995f   
-		'afdc1fe0ffb0211', // afdc1fe0ffb02110468365d7d3b8fe85       
-		'5fb1b0100b22120', // 5fb1b0100b2212003aa56c4d37673a60  
-		'e95109d75302b01', // e95109d75302b0109706ddeeff7b12e1
-		'ab1ffc33c331210', // ab1ffc33c3312100e6da174292d3ae3d      
-				
+		
 		// Flow Designer
 		'"actionOrder" is not defined.',
 		'"modalTitle" is not defined.',
@@ -116,37 +101,7 @@
 		'"currentStep" is not defined.',
 		'"errMsg" is not defined.',
 		'"props" is not defined.',
-		'Cannot read property "currentAlias" from undefined',
-
-		// Yokohama
-		"var result = dep.getED().isReadOnly() ? 'true' : 'false';",
-		"var tcs = del.getAttribute('tableChoicesScript');",
-		'new SNC.AnonymizationApi()',
-		'06a6c0b2eb20010', // 06a6c0b2eb2001006a668c505206fe63
-		'c5c370657710011', // c5c3706577100110990d94b92c5a997c
-		'324c8745d703310', // 324c8745d7033100b6bddb0c825203eb
-		'c883036f5331030', // c883036f533103001f2bddeeff7b12b9
-		'3048c6b65b3b030', // 3048c6b65b3b0300e3cc8e6541f91aaf
-		'23e4f33ce113121', // 23e4f33ce11312105590bd68cbbecb8a 
-		'ab1ffc33c331210', // ab1ffc33c3312100e6da174292d3ae3d
-		'62952a3953c2261', // 62952a3953c2261066ff68f230e5e625 
-		'4d0fd3387300230', // 4d0fd338730023009ecc234ffff6a7d3 
-		'654e325f5301021', // 654e325f53010210d344ddeeff7b1242
-		'0a2eda18ebf1311', // 0a2eda18ebf131102b57e530695228cf
-		'5ab6e593ffe9221', // 5ab6e593ffe92210fbe7ffffffffff6b     
-
-		// Zurich
-		'"inputvis" is not defined.',
-		"getMessage('Show less')",
-		'9566b90ceb03110', // 9566b90ceb0311003623666cd206fe8c
-		'4659d132d723210', // 4659d132d7232100b6bddb0c8252039e
-		'64e5e4737322130', // 64e5e473732213002cb26fbc1bf6a7ef
-		'28fc80a77727111', // 28fc80a7772711104cdac0c23e5a9903
-		'209fc2f1c301120', // 209fc2f1c3011200f7d1ca3adfba8f4b
-		'8f5128567740121', // 8f51285677401210e45dd86bba5a99a1
-		'bec48ba37f10621', // bec48ba37f1062105adc654edc866546 
-		'ded607e693a1121', // ded607e693a11210f2cafff9648918c0
-
+		'Cannot read property "currentAlias" from undefined'
 	];
 	return aPatterns;
 }]]></script>
@@ -154,15 +109,14 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2023-09-13 12:47:41</sys_created_on>
         <sys_id>813dabbc1bddf110cd6153d16b4bcb3a</sys_id>
-        <sys_mod_count>127</sys_mod_count>
+        <sys_mod_count>89</sys_mod_count>
         <sys_name>GetEvaluatorErrorExceptionPatterns</sys_name>
         <sys_package display_value="DevTools" source="x_snc_devtools">d689f6901bd38450a89720a8ec4bcbfd</sys_package>
         <sys_policy/>
         <sys_scope display_value="DevTools">d689f6901bd38450a89720a8ec4bcbfd</sys_scope>
         <sys_update_name>sys_script_include_813dabbc1bddf110cd6153d16b4bcb3a</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-01-13 14:31:49</sys_updated_on>
-        <x_snc_devtools_sys_ui_script/>
+        <sys_updated_on>2025-05-16 10:23:46</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>813dabbc1bddf110cd6153d16b4bcb3a</id>

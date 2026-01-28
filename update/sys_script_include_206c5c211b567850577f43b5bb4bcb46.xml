@@ -13,12 +13,9 @@ Methods:
 * SetContext()
 * SetResult()
 * GetResult()
-* GetResultIgnoreDeprecated()
 * TestCase_GetValue()
 * TestCase_GetRecord()
 * TestCase_GetRecord_CheckResult()
-* TestCase_GetRecordEx()
-* TestCase_GetRecordEx_CheckResult()
 * TestCase_RecordGetValue()
 * TestCase_IsRecordAccessibleByUser()
 * TestCase_InstanceScanCheck()
@@ -27,8 +24,6 @@ Methods:
 * TestCase_InstanceScanCheckScriptOnly_CheckResult()
 * TestCase_HttpRequest()
 * TestCase_HttpRequest_CheckResult()
-* TestCase_RestApiOperation()
-* TestCase_RestApiOperation_CheckResult()
 * TestCase()</description>
         <mobile_callable>false</mobile_callable>
         <name>TestAPI</name>
@@ -51,8 +46,6 @@ TestAPI.prototype =
 		{
 			this.SetContext(strContext);
 		}
-		var transactionCache = new TransactionCacheAPI('DEVTOOLS');
-		transactionCache.SetItem('deprecated',[]);
     },
 	
 	Log: function(vPayload)
@@ -74,8 +67,10 @@ TestAPI.prototype =
 		}		
 		this.m_strContext = strContext;
 		
-		var transactionCache = new TransactionCacheAPI('DEVTOOLS');
-		transactionCache.SetItem('atf_running',true);
+		var transactionCache = new x_snc_devtools.TransactionCacheAPI('ATF');
+		transactionCache.SetItem(strContext,'running',true);
+		
+		SetProperty('devtools.atf.running.'+strContext,'true',true);		
 	},
 	
 	SetResult: function(bResult)
@@ -83,34 +78,12 @@ TestAPI.prototype =
 		this.m_bResult = GetBoolValue(bResult);
 	},
 
-	GetResult: function(bIgnoreDeprecated)
+	GetResult: function()
 	{
-		bIgnoreDeprecated = GetBoolValue(bIgnoreDeprecated);
-
-		var transactionCache = new TransactionCacheAPI('DEVTOOLS');
-		var aDeprecated = GetArrayValue(transactionCache.GetItem('deprecated'));
-		if (aDeprecated.length > 0)
-		{
-			if (bIgnoreDeprecated == false)
-			{
-				this.SetResult(false);
-				this.Log('FAILED: Deprecated code has been called:');
-			}	
-			else
-			{
-				this.Log('WARNING: Deprecated code has been called:');
-			}
-			this.Log(RenderValue(aDeprecated) + '\n\n');
-		}
-	
 		return this.m_bResult;
 	},
 	
-	GetResultIgnoreDeprecated: function()
-	{
-		return this.GetResult(true);
-	},
-		
+	
 	TestCase_GetValue: function(
 		vInputObject,
 		vInputKey1,
@@ -148,35 +121,13 @@ TestAPI.prototype =
 			'GetRecord',
 			GetRecord,
 			{
-				'strTable': strTable,
-				'strRecordSysId': strRecordSysId,
-				'bNoCrossScope': bNoCrossScope
+				'Table': strTable,
+				'SysId': strRecordSysId,
+				'NoCrossScope': bNoCrossScope
 			},
 			bExpected,
 			TestCase_GetRecord_CheckResult);
 	},
-
-	TestCase_GetRecordEx: function(strTable, strRecordSysId, bNoCrossScope, strColumnPrefix, bGhost, bExpected)
-	{
-		function TestCase_GetRecordEx_CheckResult(vInput,vExpected,vResult)
-		{
-			return (IsValidRecord(vResult) == vExpected);
-		}	
-		
-		return this.TestCase(
-			'GetRecord',
-			GetRecord,
-			{
-				'strTable': strTable,
-				'strRecordSysId': strRecordSysId,
-				'bNoCrossScope': bNoCrossScope,
-				'strColumnPrefix': strColumnPrefix,
-				'bGhost': bGhost
-
-			},
-			bExpected,
-			TestCase_GetRecordEx_CheckResult);
-	},	
 	
 	TestCase_RecordGetValue:function(strTable,strSysId,strColumn,vExpected)
 	{
@@ -417,138 +368,6 @@ TestAPI.prototype =
 			true);
 	},
 	
-	TestCase_RestApiOperation: function(
-		strService,
-		strOperation,
-		basicAuth,
-		urlParams,
-		vExpected,
-		callbackCheckResult)
-	{
-		var strTestCaseTitle = 'REST API: ' + strService + ' - ' + strOperation;
-		var test = this;
-
-		function TestCase_RestApiOperation_CheckResult(vInput,vExpected,vResult)
-		{
-			var vResultParsed = ParseJson(vResult);
-			test.Log('Parsed result:' + RenderValue(vResultParsed));
-			if (vExpected == 'SUCCESS')
-			{
-				if (GetValue(vResultParsed,'result','message') == 'SUCCESS')
-				{
-
-					var strProgressId = GetValue(vResultParsed,'result','progress_id');
-					if (IsValidSysId(strProgressId) == true)
-					{
-						var nIteration = 0;
-						var bContinue = true;
-						while (bContinue == true)
-						{
-							nIteration++;
-							if (nIteration == 10)
-							{
-								bContinue = false;
-							}
-							var strUrl =
-								GetInstanceUrl()
-								+ 'api/sn_cicd/progress/'
-								+ strProgressId;
-							var params = {
-								basicauth: basicAuth,
-								url: strUrl
-							};
-							var resultProgress = HttpRequest(params);
-							var resultProgressParsed = ParseJson(resultProgress);
-							if (resultProgressParsed == false)
-							{
-								test.Log('Failed to retrieve progress');					
-								bContinue = false;
-							}
-							else
-							{
-								test.Log('Progress record after '+ nIteration +' iteration(s):' + RenderValue(resultProgressParsed));
-								
-								var strStatus = GetStringValue(GetValue(
-									resultProgressParsed,'result','status'));
-								if (strStatus == '2') // Success
-								{
-									bContinue = false;
-								}
-								if (strStatus == '3') // Failed
-								{
-									bContinue = false;
-								}
-							}
-							Sleep(2);
-
-						}
-					}
-
-					return true;
-				}
-				return false;
-			}
-			if (GetValue(vResultParsed,'error','message') == vExpected)
-			{
-				return true;
-			}
-			return false;
-		}
-		
-		if (IsFunction(callbackCheckResult) == false)
-		{
-			callbackCheckResult = TestCase_RestApiOperation_CheckResult;
-		}
-
-		var grRestService = new GlideRecord('sys_ws_definition');
-		grRestService.addQuery('name','=',strService);
-		grRestService.query();
-		if (grRestService.getRowCount() != 1)
-		{
-			this.SetResult(false);
-			this.Log('TEST CASE: '+strTestCaseTitle +': Service "'+strService+'" not found or ambiguous.\nTest case FAILED\n\n');
-			return;
-		}
-		grRestService.next();
-
-		var grRestOperation = new GlideRecord('sys_ws_operation');
-		grRestOperation.addQuery('name','=',strOperation);
-		grRestOperation.addQuery('web_service_definition','=',grRestService.sys_id);
-		grRestOperation.query();
-		if (grRestOperation.getRowCount() != 1)
-		{
-			this.SetResult(false);
-			this.Log('TEST CASE: ' + strTestCaseTitle +': Operation "'+strOperation+'" not found or ambiguous.\nTest case FAILED\n\n');
-			return;
-		}
-		grRestOperation.next();
-
-		var strUrl = '';
-
-		strUrl += GetInstanceUrl();
-		strUrl += grRestOperation.operation_uri;
-
-		var strUrlParams = x_snc_devtools.MakeUrlParameters(urlParams);
-		if (strUrlParams != '')
-		{
-			strUrl += '?' + strUrlParams;
-		}	
-		
-		this.TestCase(
-			strTestCaseTitle,
-			HttpRequest,
-			{
-				'vParams':
-				{
-					url: strUrl,
-					basicauth: basicAuth
-				}
-			},
-			vExpected,
-			callbackCheckResult,
-			true);
-	},
-
 	
 	TestCase: function(
 		strTitle,
@@ -818,15 +637,14 @@ TestAPI.prototype =
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-08-30 13:48:05</sys_created_on>
         <sys_id>206c5c211b567850577f43b5bb4bcb46</sys_id>
-        <sys_mod_count>125</sys_mod_count>
+        <sys_mod_count>91</sys_mod_count>
         <sys_name>TestAPI</sys_name>
         <sys_package display_value="DevTools" source="x_snc_devtools">d689f6901bd38450a89720a8ec4bcbfd</sys_package>
         <sys_policy/>
         <sys_scope display_value="DevTools">d689f6901bd38450a89720a8ec4bcbfd</sys_scope>
         <sys_update_name>sys_script_include_206c5c211b567850577f43b5bb4bcb46</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-11-24 15:13:07</sys_updated_on>
-        <x_snc_devtools_sys_ui_script/>
+        <sys_updated_on>2025-05-13 14:47:20</sys_updated_on>
     </sys_script_include>
     <sys_es_latest_script action="INSERT_OR_UPDATE">
         <id>206c5c211b567850577f43b5bb4bcb46</id>

@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?><record_update table="sys_restricted_caller_access">
+    <sys_restricted_caller_access action="INSERT_OR_UPDATE">
+        <description/>
+        <operation>execute</operation>
+        <rca_type>real_rca</rca_type>
+        <source>5c19e35a3befae904d73604a85e45a5f</source>
+        <source_scope display_value="DR Agile Development WORK IN PROGRESS">e8c7e7923befae904d73604a85e45a3e</source_scope>
+        <source_table>sys_script_include</source_table>
+        <source_type>2</source_type>
+        <status>2</status>
+        <sys_class_name>sys_restricted_caller_access</sys_class_name>
+        <sys_created_by>Admin.Batyrbek.Alymkulov</sys_created_by>
+        <sys_created_on>2025-10-22 14:00:17</sys_created_on>
+        <sys_id>b83611f097fc721022f2fc000153afd6</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_name>e8c7e7923befae904d73604a85e45a3e</sys_name>
+        <sys_package display_value="DevTools" source="x_snc_devtools">d689f6901bd38450a89720a8ec4bcbfd</sys_package>
+        <sys_policy/>
+        <sys_scope display_value="DevTools">d689f6901bd38450a89720a8ec4bcbfd</sys_scope>
+        <sys_update_name>sys_restricted_caller_access_b83611f097fc721022f2fc000153afd6</sys_update_name>
+        <sys_updated_by>Admin.Batyrbek.Alymkulov</sys_updated_by>
+        <sys_updated_on>2025-10-22 14:00:17</sys_updated_on>
+        <target>704694a81b1a74505331b8449b4bcb69</target>
+        <target_scope display_value="DevTools">d689f6901bd38450a89720a8ec4bcbfd</target_scope>
+        <target_table>sys_script_include</target_table>
+        <target_type>2</target_type>
+    </sys_restricted_caller_access>
+</record_update>

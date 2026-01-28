@@ -33,20 +33,6 @@ With a failure timeout of 5 Seconds</description>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_atf_step</document>
         <document_key>7706e17b1b9ce050a89720a8ec4bcb63</document_key>
-        <order>400</order>
-        <sys_class_name>sys_variable_value</sys_class_name>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2020-11-12 12:39:34</sys_created_on>
-        <sys_id>3706e17b1b9ce050a89720a8ec4bcb65</sys_id>
-        <sys_mod_count>1</sys_mod_count>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2021-07-05 12:45:50</sys_updated_on>
-        <value>user_name=_ATF_DEVTOOLS_ADMIN^EQ</value>
-        <variable display_value="Conditions">cf167c405f30220012b44adb7f46660d</variable>
-    </sys_variable_value>
-    <sys_variable_value action="INSERT_OR_UPDATE">
-        <document>sys_atf_step</document>
-        <document_key>7706e17b1b9ce050a89720a8ec4bcb63</document_key>
         <order>300</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
@@ -61,16 +47,16 @@ With a failure timeout of 5 Seconds</description>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_atf_step</document>
         <document_key>7706e17b1b9ce050a89720a8ec4bcb63</document_key>
-        <order>100</order>
+        <order>400</order>
         <sys_class_name>sys_variable_value</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2020-11-12 12:39:34</sys_created_on>
-        <sys_id>bf06e17b1b9ce050a89720a8ec4bcb64</sys_id>
-        <sys_mod_count>0</sys_mod_count>
+        <sys_id>3706e17b1b9ce050a89720a8ec4bcb65</sys_id>
+        <sys_mod_count>1</sys_mod_count>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2020-11-12 12:39:34</sys_updated_on>
-        <value>1</value>
-        <variable display_value="Enforce security">9459c28673103300f660eeadfff6a7dd</variable>
+        <sys_updated_on>2021-07-05 12:45:50</sys_updated_on>
+        <value>user_name=_ATF_DEVTOOLS_ADMIN^EQ</value>
+        <variable display_value="Conditions">cf167c405f30220012b44adb7f46660d</variable>
     </sys_variable_value>
     <sys_variable_value action="INSERT_OR_UPDATE">
         <document>sys_atf_step</document>
@@ -85,6 +71,20 @@ With a failure timeout of 5 Seconds</description>
         <sys_updated_on>2020-11-12 12:39:34</sys_updated_on>
         <value>records_match_query</value>
         <variable display_value="Assert type">dd091e22675003007ba405225685ef69</variable>
+    </sys_variable_value>
+    <sys_variable_value action="INSERT_OR_UPDATE">
+        <document>sys_atf_step</document>
+        <document_key>7706e17b1b9ce050a89720a8ec4bcb63</document_key>
+        <order>100</order>
+        <sys_class_name>sys_variable_value</sys_class_name>
+        <sys_created_by>admin</sys_created_by>
+        <sys_created_on>2020-11-12 12:39:34</sys_created_on>
+        <sys_id>bf06e17b1b9ce050a89720a8ec4bcb64</sys_id>
+        <sys_mod_count>0</sys_mod_count>
+        <sys_updated_by>admin</sys_updated_by>
+        <sys_updated_on>2020-11-12 12:39:34</sys_updated_on>
+        <value>1</value>
+        <variable display_value="Enforce security">9459c28673103300f660eeadfff6a7dd</variable>
     </sys_variable_value>
     <sys_element_mapping action="delete_multiple" query="table=var__m_atf_input_variable_0270b8005f30220012b44adb7f46666a^id=7706e17b1b9ce050a89720a8ec4bcb63"/>
 </record_update>

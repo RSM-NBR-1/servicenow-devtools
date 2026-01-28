@@ -11,20 +11,17 @@
         <sandbox_callable>false</sandbox_callable>
         <script><![CDATA[function GetTableFromSysId(strSysId)
 {
+	if (strSysId == 'global')
+	{
+		return 'sys_dictionary';
+	}
 	if (IsValidSysId(strSysId) == false)
 	{
 		return false;
 	}
 	
-	var anomalies = GetSysIdAnomalies();
-	var strTable = GetStringValue(GetValue(anomalies,strSysId));
-	if (strTable != '')
-	{
-		return strTable;
-	}
-
 	var aPriorityTables = [
-		'sys_documentation', // sys_documentation records don't have a class name
+		'sys_documentation', // sys_documentation record don't have a class name
 		'sys_metadata',
 		'sys_package',
 		'domain',
@@ -42,31 +39,8 @@
 		'sys_translated_text',
 		'sys_progress_worker',
 		'discovery_credentials',
-		'sys_connection',
-		'kb_knowledge',
-		'kb_knowledge_base'
+		'sys_connection'
 	];
-
-	var aIgnoreTablesByPrefix = [
-		'ts_', 
-		'pa_scores_',
-		'tmp_',
-		'v_',
-		'm2m_',
-		'_m2m',
-		'_mtom',
-		'000',
-		'sn_hr_',
-		'sn_doc_',
-		'sys_rollback_incremental',
-		'sys_rollback_sequence',
-		'sn_templated_snip_note_template',
-		'sn_templated_snip_channel',
-		'pa_favorites',
-		'pa_migration_ignored_scores',
-		'cmdb_ire_partial_payloads_index',
-		'sa_ci_type_icon'
-	];	
 	
 	for (var nTable = 0; nTable < aPriorityTables.length; nTable++)
 	{
@@ -77,25 +51,30 @@
 		}
 	}
 	
+
 	var aRemainingTables = [];
 
 	var grTables = new GlideRecord('sys_db_object');
 	grTables.orderByDesc('name'); // to check tables with x_ and u_ first
-	grTables.addQuery('extension_model','=',''); // only tables that don't extend from anything
+	grTables.addQuery('extension_model'); // Only want tables that don't extend from anything
 	grTables.addQuery('super_class','=',''); // No derived classes
-	var condition = grTables.addQuery('scriptable_table','=',''); // No scriptable tables
-	condition.addOrCondition('scriptable_table','=',false);
 	var strEncodedQuery = 'sys_update_nameISNOTEMPTY';
 	strEncodedQuery += '^nameISNOTEMPTY';
-
-	for (var nTable = 0; nTable < aIgnoreTablesByPrefix.length; nTable++)
-	{
-		var strPrefix = aIgnoreTablesByPrefix[nTable];
-		strEncodedQuery += '^nameNOT LIKE' + strPrefix;
-
-	}
+	strEncodedQuery += '^nameNOT LIKEts_';
+	strEncodedQuery += '^nameNOT LIKEpa_scores_';
+	strEncodedQuery += '^nameNOT LIKEv_';
+	strEncodedQuery += '^nameNOT LIKEm2m_';
+	strEncodedQuery += '^nameNOT LIKE_m2m';
+	strEncodedQuery += '^nameNOT LIKE_mtom';
+	strEncodedQuery += '^nameNOT LIKE000';
+	strEncodedQuery += '^nameNOT LIKEsn_hr_';
+	strEncodedQuery += '^nameNOT LIKEsn_esign_';
+	strEncodedQuery += '^nameNOT LIKEsn_doc_' 
 	grTables.addEncodedQuery(strEncodedQuery);
-
+	grTables.addQuery('name','!=','sys_rollback_incremental');
+	grTables.addQuery('name','!=','sys_rollback_sequence');
+	grTables.addQuery('name','!=','sn_templated_snip_note_template');
+	grTables.addQuery('name','!=','sn_templated_snip_channel');
 	for (var nPriorityTable = 0; nPriorityTable < aPriorityTables.length; nPriorityTable++)
 	{
 		grTables.addQuery('name','!=',aPriorityTables[nPriorityTable]);
@@ -103,7 +82,7 @@
 	GlideRecordQuery(grTables,true);
 	while (grTables.next())
 	{
-		var strTable = grTables.getValue('name');
+		var strTable  = grTables.getValue('name');
 		aRemainingTables.push(strTable);
 	}
 
@@ -122,25 +101,13 @@
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2021-10-08 14:07:48</sys_created_on>
         <sys_id>fc26194edb073c504647dad1f3961930</sys_id>
-        <sys_mod_count>89</sys_mod_count>
+        <sys_mod_count>70</sys_mod_count>
         <sys_name>GetTableFromSysId</sys_name>
         <sys_package display_value="DevTools" source="x_snc_devtools">d689f6901bd38450a89720a8ec4bcbfd</sys_package>
         <sys_policy/>
         <sys_scope display_value="DevTools">d689f6901bd38450a89720a8ec4bcbfd</sys_scope>
         <sys_update_name>sys_script_include_fc26194edb073c504647dad1f3961930</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2026-01-08 12:09:27</sys_updated_on>
-        <x_snc_devtools_sys_ui_script/>
+        <sys_updated_on>2024-11-29 13:43:33</sys_updated_on>
     </sys_script_include>
-    <sys_es_latest_script action="INSERT_OR_UPDATE">
-        <id>fc26194edb073c504647dad1f3961930</id>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-06-21 12:18:58</sys_created_on>
-        <sys_id>1173afc5939e2250ae97b4aa6aba104c</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-06-21 12:18:58</sys_updated_on>
-        <table>sys_script_include</table>
-        <use_es_latest>false</use_es_latest>
-    </sys_es_latest_script>
 </record_update>

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?><record_update table="sys_script_include">
     <sys_script_include action="INSERT_OR_UPDATE">
-        <access>public</access>
+        <access>package_private</access>
         <active>true</active>
         <api_name>x_snc_devtools.GetRecordsFromUpdateXml</api_name>
         <caller_access/>
@@ -9,15 +9,13 @@
         <mobile_callable>false</mobile_callable>
         <name>GetRecordsFromUpdateXml</name>
         <sandbox_callable>false</sandbox_callable>
-        <script><![CDATA[function GetRecordsFromUpdateXml(vUpdateXml,bIncludeDeleted)
+        <script><![CDATA[function GetRecordsFromUpdateXml(vUpdateXml)
 {
 	var grUpdateXml = GetRecord('sys_update_xml',vUpdateXml);
 	if (IsValidRecord(grUpdateXml) == false)
 	{
 		return false;
 	}
-
-	bIncludeDeleted = GetBoolValue(bIncludeDeleted);
 
 	var aRecords = [];
 
@@ -27,60 +25,8 @@
 		return false;
 	}
 
-	var record_update = GetValue(payload,'record_update');
-	if (IsObject(record_update) == false)
-	{
-		return false;
-	}
-
-	var strClassName = GetValue(record_update,'table');
-	if (strClassName == '')
-	{
-		return [];
-	}
-
+	var strClassName = GetValue(payload,'record_update','table');
 	var strSysId = GetValue(payload,'record_update',strClassName,'sys_id');
-
-	if (IsValidSysId(strSysId) == false)
-	{
-		var aClassNames = GetKeys(record_update);
-		for (var nClassName = 0; nClassName < aClassNames.length; nClassName++)
-		{
-			var strClassName = aClassNames[nClassName];
-			var aRecordPayloads = GetArrayValue(
-				GetValue(payload,'record_update',strClassName));
-
-			var aSysIds = [];
-
-			for (var nPayload = 0; nPayload < aRecordPayloads.length; nPayload++)
-			{
-				var record_payload = GetValue(payload,'record_update',strClassName,nPayload)
-				var strSysId = GetValue(record_payload,'sys_id');
-				if (IsValidSysId(strSysId))
-				{
-					aSysIds = ArrayPushUnique(aSysIds,strSysId);
-				}
-
-			}
-
-			for (var nSysId = 0; nSysId < aSysIds.length; nSysId++)
-			{
-				var strSysId = aSysIds[nSysId];
-				var grRecord = GetRecord(strClassName,strSysId);
-				if (IsValidRecord(grRecord) == true)
-				{
-					var record = Clone(grRecord);
-					if (GetStringValue(record.sys_class_name) == '')
-					{
-						record.sys_class_name = strClassName;
-					}
-					aRecords.push(record);
-				}	
-			}
-		}
-		return aRecords; 
-	}
-
 	var grRecord = GetRecord(strClassName,strSysId);
 	if (IsValidRecord(grRecord) == true)
 	{
@@ -123,48 +69,19 @@
 			aRecords.push(record);
 		}	
 	}			
-
-	if (bIncludeDeleted == true)
-	{
-		var grDeleted = new GlideRecord('sys_metadata_delete');
-		grDeleted.addQuery('sys_metadata',strSysId);
-		grDeleted.query();
-		if (grDeleted.next())
-		{
-			var grRecord = GetRecord('sys_metadata_delete',grDeleted.sys_id);
-			if (IsValidRecord(grRecord) == true)
-			{
-				var record = Clone(grRecord);
-				aRecords.push(record);
-			}	
-		}
-	}
-
 	return aRecords;
 }]]></script>
         <sys_class_name>sys_script_include</sys_class_name>
         <sys_created_by>admin</sys_created_by>
         <sys_created_on>2024-12-27 13:43:47</sys_created_on>
         <sys_id>ea3e5564c3329a505a37f907050131e3</sys_id>
-        <sys_mod_count>31</sys_mod_count>
+        <sys_mod_count>13</sys_mod_count>
         <sys_name>GetRecordsFromUpdateXml</sys_name>
         <sys_package display_value="DevTools" source="x_snc_devtools">d689f6901bd38450a89720a8ec4bcbfd</sys_package>
         <sys_policy/>
         <sys_scope display_value="DevTools">d689f6901bd38450a89720a8ec4bcbfd</sys_scope>
         <sys_update_name>sys_script_include_ea3e5564c3329a505a37f907050131e3</sys_update_name>
         <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-10-01 15:22:51</sys_updated_on>
-        <x_snc_devtools_sys_ui_script/>
+        <sys_updated_on>2025-01-03 09:33:22</sys_updated_on>
     </sys_script_include>
-    <sys_es_latest_script action="INSERT_OR_UPDATE">
-        <id>ea3e5564c3329a505a37f907050131e3</id>
-        <sys_created_by>admin</sys_created_by>
-        <sys_created_on>2025-06-08 10:02:46</sys_created_on>
-        <sys_id>2797c04193ca2e10ae97b4aa6aba10ba</sys_id>
-        <sys_mod_count>0</sys_mod_count>
-        <sys_updated_by>admin</sys_updated_by>
-        <sys_updated_on>2025-06-08 10:02:46</sys_updated_on>
-        <table>sys_script_include</table>
-        <use_es_latest>false</use_es_latest>
-    </sys_es_latest_script>
 </record_update>
